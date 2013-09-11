@@ -1,12 +1,19 @@
+<% if user_signed_in? %>
+	<h1>Welcome Playa!</h1>
+		<% else %>
 <div class="hero-unit">
   <div class="container">
     <h1>Welcome to HealthTexts.com</h1>
     <p>
     	<%= link_to "HealthTexts.com", "http://HealthTexts.com"%> Will make it's debut on September 17th 2013 at the Georgia Regents University Innovation Summit!
     </p>
-    <p><a class="btn btn-primary btn-lg">Learn more!</a></p>
+    <p>
+    	<%= link_to "Sign Up Now!", new_user_registration_path, class:"btn btn-primary btn-lg" %>
+    	</p>
   </div>
 </div>
+
+<% end -%>
 
 
 
