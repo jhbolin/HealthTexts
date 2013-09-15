@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>HealthTexts.com</title>
-					<%= stylesheet_link_tag    "application", :media => "all" %>
-					<%= javascript_include_tag "application" %>
-					<%= csrf_meta_tags %>
-					<%= tag :meta, name: "viewport", content: "width=device-width, initial-scale=1.0" %>
-			</head>
+	<title>HealthTexts.com</title>
+	<%= stylesheet_link_tag    "application", :media => "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
+	<%= tag :meta, name: "viewport", content: "width=device-width, initial-scale=1.0" %>
+</head>
+<body>
+	<%= render 'layouts/header' %>
 
-
-
-		<%= render 'layouts/header' %>
-	
 	<div class="container">
 		<%= flash.each do |name, msg| %>
-		<%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+			<%= content_tag(:div, msg, class: "alert alert-#{name}") %>
 		<% end -%>
 		<%= yield %>
 		<%= render 'layouts/footer' %>
 	</div>
-	
-    
-	
-	</body>
+</body>
 </html>

@@ -3,12 +3,13 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.1'
 gem 'jquery-rails'
 gem 'devise'
-gem 'simple_form'
+#gem 'simple_form'
 gem 'country_select'
+gem 'twilio-ruby'
 
 
 group :production do
-	gem 'pg'
+  gem 'pg'
 end
 
 group :development, :test do 
@@ -19,7 +20,6 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
-  gem 'bootstrap-sass', '~> 2.3.2.2'
 end
 
 #Be sure to have a copy of the Bootstrap stylesheet available on your application, 
