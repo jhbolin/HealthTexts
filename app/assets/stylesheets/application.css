@@ -13,3 +13,17 @@
  *= require pages
  *= require_self
 */
+
+form#new_user {
+  .checkbox {
+    label {
+      color: #fff;
+    }
+  }
+}
+
+.jumbotron {
+	background: url('http://newagemedicalclinics.com/wp-content/uploads/2012/11/j0409449.jpg');
+	/*background: image-url('whatever.jpg')*/
+	color: #fff;
+}

@@ -1,21 +1,82 @@
 <!DOCTYPE html>
 <html>
-	<head>
-	<title>HealthTexts.com</title>
-	<%= stylesheet_link_tag    "application", :media => "all" %>
-	<%= javascript_include_tag "application" %>
-	<%= csrf_meta_tags %>
-	<%= tag :meta, name: "viewport", content: "width=device-width, initial-scale=1.0" %>
+  <head>
+  <title>HealthTexts.com</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= tag :meta, name: "viewport", content: "width=device-width, initial-scale=1.0" %>
 </head>
 <body>
-	<%= render 'layouts/header' %>
+  <div class="">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">HealthTexts.com</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active">
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/about">About</a>
+          </li>
+          <li>
+            <a href="/contact">Contact</a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="#">Group messaging</a>
+              </li>
+              <li>
+                <a href="#">Fitness</a>
+              </li>
+              <li>
+                <a href="#">Illness</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <% if !user_signed_in? %>
+          <%= form_for(User.new, :url => session_path(:user), html: {class: 'form-inline', role: 'form'}) do |f| %>
+            <div class="form-group">
+              <%= f.label :email, :class => 'sr-only' %>
+              <%= f.text_field :email, :class => 'form-control', :placeholder => 'Email' %>
+            </div>
 
-	<div class="container">
-		<%= flash.each do |name, msg| %>
-			<%= content_tag(:div, msg, class: "alert alert-#{name}") %>
-		<% end -%>
-		<%= yield %>
-		<%= render 'layouts/footer' %>
-	</div>
+            <div class="form-group">
+              <%= f.label :password, :class => 'sr-only' %>
+              <%= f.password_field :password, :class => 'form-control', :placeholder => 'Password' %>
+            </div>
+
+            <div class="checkbox">
+              <label>
+                <%= f.check_box :remember_me, as: :boolean %> 
+                Remember me
+              </label>
+            </div>
+              
+            <%= f.button "Sign in", class: "btn btn-primary" %>
+          <% end %>
+        <% end %>
+      </div>
+      <!--/.navbar-collapse -->
+    </div>
+
+    <%= yield %>
+
+    <footer class='container'>
+      <p>
+        © Company 2013
+      </p>
+    </footer>
+  </div>
 </body>
 </html>
