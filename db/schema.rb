@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130910233737) do
+ActiveRecord::Schema.define(:version => 20130917011510) do
+
+  create_table "health_condition_subscriptions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "health_condition_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "health_conditions", :force => true do |t|
+    t.string "name"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -27,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20130910233737) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "name"
+    t.integer  "phone_number"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

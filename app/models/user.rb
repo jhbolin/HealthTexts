@@ -6,5 +6,23 @@ class User < ActiveRecord::Base
          :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name 
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :phone_number
+
+  has_many :health_condition_subscriptions, :autosave => true
+
+  def phone_number_country_code
+    phone_number.to_s[0]
+  end
+
+  def phone_number_country_code=(country_code)
+    phone_number
+  end
+
+  def phone_number_area_code
+    phone_number.to_s[1..3]
+  end
+
+  def phone_number_suffix
+    phone_number.to_s[4..10]
+  end
 end

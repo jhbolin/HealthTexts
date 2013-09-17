@@ -1,9 +1,26 @@
 <% if user_signed_in? %>
   <div class='container'>
-    <h1>Welcome Playa!</h1>  
+    <h1>Welcome Playa!</h1>
 
-    <%= form_tag do %>
-      
+    <%= form_for current_user, :url => user_registration_path do |f| %>
+      <div class='form-group'>
+        <%= f.label :phone_number_country_code, 'Phone number' %>
+        <div>
+          <%= f.select :phone_number_country_code, 1..10, {}, :class => 'form-control', :style => 'display: inline; width: auto;' %>
+          <%= f.text_field :phone_number_area_code, :size => 3, :class => 'form-control', :style => 'display: inline; width: auto;' %>
+          <%= f.text_field :phone_number_suffix, :size => 7, :class => 'form-control', :style => 'display: inline; width: auto;' %>
+        </div>
+      </div>
+
+      <% HealthCondition.all.each do |health_condition| %>
+        <div>
+          <% eid = "user_health_condition_ids_#{health_condition.id}" %>
+          <%= check_box_tag 'user[health_condition_ids][]', health_condition.id, current_user.health_condition_subscriptions.any? { |hcs| hcs.health_condition_id == health_condition.id }, :id => eid %>
+          <%= label_tag eid, health_condition.name %>
+        </div>
+      <% end %>
+
+      <%= f.button 'Save', :class => 'btn btn-default' %>
     <% end %>
   </div>
 <% else %>
