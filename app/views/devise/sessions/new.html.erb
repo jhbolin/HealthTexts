@@ -1,7 +1,15 @@
 <div class='container'>
   <h2>Sign in</h2>
 
-  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {role: 'form', :style => 'width: 400px', :autocomplete => 'off'}) do |f| %>
+  <%= form_for resource, :as => resource_name, :url => session_path(resource_name), html: {role: 'form', :style => 'width: 400px', :autocomplete => 'off'} do |f| %>
+    <% if resource.errors.any? %>
+      <ul class='alert alert-danger'>
+        <% resource.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
     <div class="form-group">
       <%= f.label :email %>
       <%= f.text_field :email, :class => 'form-control' %>
