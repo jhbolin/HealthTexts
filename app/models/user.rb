@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   has_many :health_condition_subscriptions, :autosave => true
 
+  validates :name, :length => {:maximum => 50}
+
   def phone_number_country_code
     phone_number.to_s[0]
   end

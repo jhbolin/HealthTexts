@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130917014355) do
+ActiveRecord::Schema.define(:version => 20130917022647) do
 
   create_table "health_condition_subscriptions", :force => true do |t|
     t.integer  "user_id"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20130917014355) do
 
   create_table "health_conditions", :force => true do |t|
     t.string "name"
+    t.string "category"
   end
 
   create_table "users", :force => true do |t|

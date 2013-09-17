@@ -7,7 +7,6 @@ gem 'devise'
 gem 'country_select'
 gem 'twilio-ruby'
 
-
 group :production do
   gem 'pg'
 end

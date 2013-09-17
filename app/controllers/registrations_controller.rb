@@ -21,7 +21,23 @@ class RegistrationsController < Devise::RegistrationsController
       end
     end
 
-    current_user.update_attributes!(attrs)
+    current_user.attributes = attrs
+
+    phone_number_changed = current_user.phone_number_changed?
+
+    if phone_number_changed
+      client = Twilio::REST::Client.new 'AC6d2810c695855bd27d742a823f6b907e', '82d7a06dfed69448a6d1c1c05c57cf5a'
+
+      account = client.account
+
+      account.sms.messages.create(
+        :from => "+14158020123",
+        :to => "+#{current_user.phone_number}",
+        :body => "Welcome, #{current_user.name}. Thanks for subscribing to HealthTexts.com, where we empower you to take control of your health.",
+      )
+    end
+
+    current_user.save!
 
     redirect_to :back
   end
