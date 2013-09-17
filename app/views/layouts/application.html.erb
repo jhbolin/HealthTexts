@@ -52,12 +52,12 @@
           <%= form_for(User.new, :url => session_path(:user), html: {class: 'form-inline', role: 'form', :style => 'float: right; margin-top: 8px;', :autocomplete => 'off'}) do |f| %>
             <div class="form-group">
               <%= f.label :email, :class => 'sr-only' %>
-              <%= f.text_field :email, :class => 'form-control', :placeholder => 'Email', :style => 'width: 150px' %>
+              <%= f.text_field :email, :class => 'form-control', :placeholder => 'Email', :style => 'max-width: 150px' %>
             </div>
 
             <div class="form-group">
               <%= f.label :password, :class => 'sr-only' %>
-              <%= f.password_field :password, :class => 'form-control', :placeholder => 'Password', :style => 'width: 150px' %>
+              <%= f.password_field :password, :class => 'form-control', :placeholder => 'Password', :style => 'max-width: 150px' %>
             </div>
 
             <!-- <div class="checkbox">
