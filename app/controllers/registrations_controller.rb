@@ -39,6 +39,10 @@ class RegistrationsController < Devise::RegistrationsController
 
     current_user.save!
 
+    if phone_number_changed
+      flash.notice = 'Thank you for your subscription. You will receive a confirmation text message.'
+    end
+
     redirect_to :back
   end
 end
