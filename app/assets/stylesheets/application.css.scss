@@ -23,7 +23,17 @@ form#new_user {
 }
 
 .jumbotron {
-	background: url('http://newagemedicalclinics.com/wp-content/uploads/2012/11/j0409449.jpg');
-	/*background: image-url('whatever.jpg')*/
-	color: #fff;
+  background: url('http://zowchow.com/files/2013/01/digital-doctor.jpg') no-repeat left center;
+  height: 350px;
+  margin-bottom: 100px;
+  #words {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+  	background: white;
+    box-shadow: 0px 2px 3px #000;
+  	color: #333;
+    margin-top: 160px;
+    padding: 10px 30px 20px 30px;
+  }
 }

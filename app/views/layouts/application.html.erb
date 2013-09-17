@@ -41,28 +41,32 @@
               <li>
                 <a href="#">Illness</a>
               </li>
+              <li>
+                <a href="/users/sign_out">Sign out</a>
+              </li>
             </ul>
           </li>
         </ul>
-        <% if !user_signed_in? %>
+
+        <% unless user_signed_in? %>
           <%= form_for(User.new, :url => session_path(:user), html: {class: 'form-inline', role: 'form'}) do |f| %>
             <div class="form-group">
               <%= f.label :email, :class => 'sr-only' %>
-              <%= f.text_field :email, :class => 'form-control', :placeholder => 'Email' %>
+              <%= f.text_field :email, :class => 'form-control', :placeholder => 'Email', :style => 'width: 150px' %>
             </div>
 
             <div class="form-group">
               <%= f.label :password, :class => 'sr-only' %>
-              <%= f.password_field :password, :class => 'form-control', :placeholder => 'Password' %>
+              <%= f.password_field :password, :class => 'form-control', :placeholder => 'Password', :style => 'width: 150px' %>
             </div>
 
-            <div class="checkbox">
+            <!-- <div class="checkbox">
               <label>
-                <%= f.check_box :remember_me, as: :boolean %> 
+                <%= f.check_box :remember_me, as: :boolean %>
                 Remember me
               </label>
-            </div>
-              
+            </div> -->
+
             <%= f.button "Sign in", class: "btn btn-primary" %>
           <% end %>
         <% end %>
@@ -74,7 +78,7 @@
 
     <footer class='container'>
       <p>
-        © Company 2013
+        &copy; Company 2013
       </p>
     </footer>
   </div>
